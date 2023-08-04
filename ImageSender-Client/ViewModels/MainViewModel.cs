@@ -1,4 +1,4 @@
-﻿using ImageSender_Client.Commands;
+using ImageSender_Client.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,6 @@ namespace ImageSender_Client.ViewModels
         public bool IsConnected { get; set; } = false;
         public Socket Socket { get; set; }
 
-        [Obsolete]
         public MainViewModel()
         {
             string hostName = Dns.GetHostName();
@@ -63,6 +62,11 @@ namespace ImageSender_Client.ViewModels
                             MessageBox.Show(ex.Message, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     });
+                }
+
+                else
+                {
+                    MessageBox.Show("You are already connected to the server.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -99,7 +103,7 @@ namespace ImageSender_Client.ViewModels
 
                 else
                 {
-                    MessageBox.Show("You must first connect to the server.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("You are already connected to the server.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
         }
